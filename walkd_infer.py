@@ -23,7 +23,7 @@ dis=np.array(y)
 #######
 avgd=[np.mean(dis) for x in range(len(y))]                      #absolute average distance (a constant but must have a list for plotting]
 #######
-T=[int(t/60)+((t%60)/60) for t in df['time'] if t!=0]                #list of different time durations I walked 
+T=[int(t/60)+((t%60)/60) for t in df['time'] if t!=0]                #list of different walk durations
 #######
 V=[s[0]/s[1] for s in zip(y,T) if (s[1]!=0)]                              #list of the various speeds that I had on various days
 #######)
@@ -45,30 +45,21 @@ avgV=[np.mean(vel) for x in range(len(vel))]                 #absolute average v
 #plt.figure(figsize=(8,8))
 #x=df['time']
 #plt.plot(y)                                    #distance traversed 
-plt.plot(y)                                     #velocity 
+#plt.plot(y)                                     #velocity 
 #plt.plot(avgd)                             #absolute average distance
 #plt.plot(avgV)                             #absolute average velocity
 #plt.plot(mavgdis)                       #moving average distance
 #plt.scatter(V, y)                          #distance vs velocity
-#plt.scatter(T, V)                         #velocity vs time
-#plt.scatter(T, y)                          #distance vs time
-plt.plot(avgd)
-plt.xlabel('days')
-plt.ylabel('distance(in km)')
-plt.legend(['distance traversed', 'average distance traversed'])
+plt.plot(Cdfdist)
+#plt.scatter(y, V)                         #velocity vs time
+#plt.scatter(T, V)                          #distance vs time  
+#plt.plot(T)
+plt.xlabel('number of days')
+plt.ylabel('net distance(km)')
+plt.legend(['distance traversed'])
+plt.title('Net distance traversed')
 print('Average Speed= ', str(np.mean(vel))+' km')
 print('Average Distance= ', str(np.mean(dis))+' km')
 plt.show()
 
-
-
-
-
-
-
-
-
-
-
-   
 
