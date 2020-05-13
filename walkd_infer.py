@@ -3,8 +3,10 @@ from scipy import stats
 import pandas as pd
 from pylab import *
 import seaborn as sns
-df=pd.read_csv('walkd.txt')                                                #reading the data file 
-y=[x for x in df['distance'] ]                                       #list of distance traversed on various days                             
+df=pd.read_csv('walkd.txt')                                                 #reading the data file 
+y=[x for x in df['distance'] ]                                                  #list of distance traversed on various days
+#######
+nd=[ a for a in range(len(y))]                                               #list of number of days
 #######
 mavgdis=[]                                                                            #list of moving average distance                                              
 avgd=0
@@ -49,8 +51,7 @@ avgV=[np.mean(vel) for x in range(len(vel))]                 #absolute average v
 #plt.plot(avgd)                             #absolute average distance
 #plt.plot(mavgV)                             #absolute average velocity
 #plt.plot(mavgdis)                       #moving average distance
-#plt.scatter(V, y)                          #distance vs velocity
-nd=[ a for a in range(len(y))]          
+#plt.scatter(V, y)                          #distance vs velocity      
 plt.plot(nd, Cdfdist)
 #sns.jointplot(x='time', y='distance', kind='kde', data=df).annotate(stats.pearsonr)
 #sns.regplot(x='time', y='distance', data=df, fit_reg=False)
@@ -66,3 +67,6 @@ print(df.iloc[:, :2].corr())
 print('Average Speed= ', str(np.mean(vel))+' km')
 print('Average Distance= ', str(np.mean(dis))+' km')
 plt.show()
+
+
+
