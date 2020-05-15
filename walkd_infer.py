@@ -52,21 +52,21 @@ avgV=[np.mean(vel) for x in range(len(vel))]                 #absolute average v
 #plt.plot(mavgV)                             #absolute average velocity
 #plt.plot(mavgdis)                       #moving average distance
 #plt.scatter(V, y)                          #distance vs velocity      
-plt.plot(nd, Cdfdist)
-#sns.jointplot(x='time', y='distance', kind='kde', data=df).annotate(stats.pearsonr)
-#sns.regplot(x='time', y='distance', data=df, fit_reg=False)
+#plt.plot(nd, Cdfdist)
+#sns.jointplot(x=T, y=y, kind='kde').annotate(stats.pearsonr)
+sns.regplot(x=T, y=y, fit_reg=True)
 #plt.bar(nd, Cdfdist)
 #plt.scatter(y, V)                         #velocity vs time
 #plt.scatter(T, V)                          #distance vs time  
 #plt.plot(T)
-plt.xlabel('number of days')
-plt.ylabel('net distance(km)')
-plt.legend(['distance traversed'])
-plt.title('Net distance traversed')
+#plt.scatter(T, y)
+plt.xlabel('Time')
+plt.ylabel('distance)')
+#plt.legend(['distance traversed'])
+#plt.title('Net distance traversed')
 print(df.iloc[:, :2].corr())
 print('Average Speed= ', str(np.mean(vel))+' km')
 print('Average Distance= ', str(np.mean(dis))+' km')
 plt.show()
-
 
 
