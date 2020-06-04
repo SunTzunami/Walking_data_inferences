@@ -6,6 +6,14 @@ import seaborn as sns
 df=pd.read_csv('walkd.txt')                                                 #reading the data file 
 y=[x for x in df['distance'] ]                                                  #list of distance traversed on various days
 #######
+import numpy as np
+from scipy import stats
+import pandas as pd
+from pylab import *
+import seaborn as sns
+df=pd.read_csv('walkd.txt')                                                 #reading the data file 
+y=[x for x in df['distance'] ]                                                  #list of distance traversed on various days
+#######
 nd=[ a for a in range(len(y))]                                               #list of number of days
 #######
 mavgdis=[]                                                                            #list of moving average distance                                              
@@ -51,23 +59,24 @@ avgV=[np.mean(vel) for x in range(len(vel))]                 #absolute average v
 #plt.plot(avgd)                             #absolute average distance
 #plt.plot(mavgV)                             #absolute average velocity
 #plt.plot(mavgdis)                       #moving average distance
-#plt.scatter(V, y)                          #distance vs velocity      
+#plt.scatter(V, y)                          #distance vs velocity
+#plt.scatter(T, V)
 plt.plot(nd, Cdfdist)
 #sns.jointplot(x=T, y=y, kind='kde').annotate(stats.pearsonr)
 #sns.regplot(x=T, y=y, fit_reg=True).annotate(xy=(T, y), stats.pearsonr)
 #plt.bar(nd, Cdfdist)
-#plt.scatter(y, V)                         #velocity vs time
-#plt.scatter(T, V)                          #distance vs time  
+#plt.scatter(T, V)                          #velocity vs time  
 #plt.plot(T)
 #plt.scatter(T, y)
-plt.xlabel('No. of days')
+plt.xlabel('Number of days')
 #plt.xlabel('Time')
-plt.ylabel('distance (in km)')
+plt.ylabel('Cumulative (net) distance (in km)')
 #plt.legend(['distance traversed'])
 #plt.title('Net distance traversed')
 print(df.iloc[:, :2].corr())
-print('Average Speed= ', str(np.mean(vel))+' km')
-print('Average Distance= ', str(np.mean(dis))+' km')
+print('Average Speed= ', str(np.mean(vel))+' kmph.')
+print('Average Distance= ', str(np.mean(dis))+' km.')
+print('Average duration= ', str(np.mean(T))+ ' hrs.')
 plt.show()
 
 
